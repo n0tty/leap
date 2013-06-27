@@ -1,0 +1,44 @@
+// The following code is to be added to the image slider!
+  var controller = new Leap.Controller({enableGestures: true});
+  var disableFastGestures = false;
+  
+  controller.loop(function(frame) {
+    if (disableFastGestures) return;
+  var pointableOutput = document.getElementById("pointableData");
+  var pointableString = "";
+  if (frame.pointables.length > 0) {
+    for (var i = 0; i < frame.pointables.length; i++) {
+      var pointable = frame.pointables[i];
+    }
+	}
+	
+    if (frame.valid && frame.gestures.length) {
+      var s = frame.gestures[0];
+	  if(frame.fingers.length <= 2) {
+	  if (s.type == 'swipe') {
+		if (s.state == 'start') {  
+			if (s.direction.x > 0.8) {
+				moveLeft(); //or the fuction that moves the image left
+			}
+			else if (s.direction.x < 0.8) {
+				moveRight(); //or the fuction that moves the image right
+			}
+		}
+	  }
+	}
+	
+	  if(frame.fingers.length >= 3) {
+	  if (s.type == 'swipe') {
+		 
+			if (s.direction.x > 0.8) {
+				moveLeft(); //or the fuction that moves the image left
+			}
+			else if (s.direction.x < 0.8) {
+				moveRight(); //or the fuction that moves the image right
+			}
+		
+	  }
+	}
+	  
+	}
+  });
